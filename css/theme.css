@@ -1,0 +1,24 @@
+/* THEME: colours, fonts, card width and the background image.
+   Edit this file to restyle the card. */
+:root{
+  --maroon:#5a0f1f;
+  --deep:#3a0914;
+  --ivory:#f6efe3;
+  --paper:#d9d0bf;
+  --surround:#eadfce;            /* colour around the card on wide screens */
+  --font-script:'Great Vibes','Pinyon Script',cursive;
+  --font-serif:'Cormorant Garamond',Georgia,serif;
+  --font-arabic:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif;
+  --card-width:480px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--surround:#1c0609}}
+:root[data-theme="dark"]{--surround:#1c0609}
+
+/* BACKGROUND: replace assets/images/background.jpg (keep the same name) to change it,
+   or point this url() at another file. Position and size can be tuned here too. */
+.bg{
+  background-color:var(--paper);
+  background-image:url("../assets/images/background.jpg");
+  background-position:center;
+  background-size:cover;
+}

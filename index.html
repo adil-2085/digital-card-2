@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="lock">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4a0b1a">
+<title>Shifina A.S &amp; Haris Shajahan | Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&display=swap">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/style.css">
+<noscript><style>html.lock,html.lock body{overflow:visible;height:auto}#loader{display:none}</style></noscript>
+</head>
+<body>
+<noscript><p style="padding:24px;font:16px sans-serif">Please turn on JavaScript to view this invitation.</p></noscript>
+
+<div id="loader" role="status" aria-label="Loading the wedding invitation">
+  <div class="l-in">
+    <p class="l-tag" style="--d:.2s" data-t="tag"></p>
+    <p class="l-name" style="--d:.6s" data-t="bride.name"></p>
+    <p class="l-amp" style="--d:1s">&amp;</p>
+    <p class="l-name" style="--d:1.3s" data-t="groom.name"></p>
+    <div class="bar" style="--d:1.6s"><i></i></div>
+  </div>
+</div>
+
+<div class="bg" aria-hidden="true"></div>
+
+<main class="card">
+  <section class="screen hero" id="top">
+    <p class="ar bism" lang="ar" aria-label="Bismillahir Rahmanir Raheem" data-r style="--d:.1s" data-t="bismillah"></p>
+    <p class="bism-en" data-r style="--d:.2s" data-t="bismillahEn"></p>
+    <span class="star" data-r style="--d:.3s" aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M13 0 L15.8 9.7 L26 13 L15.8 16.3 L13 26 L10.2 16.3 L0 13 L10.2 9.7 Z"/></svg></span>
+    <p class="eyebrow" data-r style="--d:.4s" data-t="tag"></p>
+    <h1 class="names" data-r style="--d:.5s">
+      <span class="name-block">
+        <span class="script" data-t="bride.name"></span>
+        <span class="parent" data-t="bride.parents"></span>
+        <span class="addr" data-t="bride.address"></span>
+      </span>
+      <span class="amp">&amp;</span>
+      <span class="name-block">
+        <span class="script" data-t="groom.name"></span>
+        <span class="parent" data-t="groom.parents"></span>
+        <span class="addr" data-t="groom.address"></span>
+      </span>
+    </h1>
+    <div class="hero-date" data-r style="--d:.8s">
+      <p class="date-en" data-t="heroDate"></p>
+      <p class="date-insha"><span data-t="heroInsha"></span> (<span class="ar-i" lang="ar" data-t="heroInshaAr"></span>)</p>
+    </div>
+    <button class="cue" id="cue" type="button" aria-label="Scroll down"><span data-t="labels.scroll"></span><i></i></button>
+  </section>
+
+  <section class="screen" id="blessing">
+    <span class="star" data-r aria-hidden="true"><svg viewBox="0 0 26 26"><path d="M13 0 L15.8 9.7 L26 13 L15.8 16.3 L13 26 L10.2 16.3 L0 13 L10.2 9.7 Z"/></svg></span>
+    <p class="note" data-r style="--d:.15s" data-t="blessing"></p>
+  </section>
+
+  <section class="screen" id="venue">
+    <p class="ar insha" lang="ar" aria-label="In shaa Allah" data-r data-t="inshaAllah"></p>
+    <div class="panel" data-r style="--d:.15s">
+      <p class="day" data-t="day"></p>
+      <p class="date" data-t="date"></p>
+      <p class="time" data-t="time"></p>
+      <div class="orn"><i></i></div>
+      <p class="at" data-t="at"></p>
+      <p class="venue" data-t="venue"></p>
+      <a class="btn" data-href="mapUrl" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span data-t="labels.directions"></span></a>
+    </div>
+  </section>
+
+  <section class="screen" id="countdown">
+    <p class="cd-lead" id="cd-lead" data-r data-t="countdownLead"></p>
+    <div class="cd" id="cd" data-r style="--d:.15s">
+      <div><b id="cd-d">00</b><span data-t="labels.days"></span></div>
+      <div><b id="cd-h">00</b><span data-t="labels.hours"></span></div>
+      <div><b id="cd-m">00</b><span data-t="labels.minutes"></span></div>
+      <div><b id="cd-s">00</b><span data-t="labels.seconds"></span></div>
+    </div>
+    <div class="orn" data-r><i></i></div>
+    <p class="share" data-r data-t="sharedBy.label"></p>
+    <p class="script by" data-r style="--d:.15s" data-t="sharedBy.name"></p>
+  </section>
+</main>
+
+<script src="data/content.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
