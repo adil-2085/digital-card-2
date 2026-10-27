@@ -107,4 +107,66 @@
       if (!tick()) clearInterval(iv);
     }, 1000);
   }
+
+  /* 4. light / dark button: a sun in light mode, a moon in dark mode */
+  var tgl = document.getElementById('theme-toggle');
+  var busy = false;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var L = C.labels || {};
+
+  function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+  function relabel() {
+    var text = isDark() ? (L.toLight || 'Switch to light mode') : (L.toDark || 'Switch to dark mode');
+    tgl.setAttribute('aria-label', text);
+    tgl.setAttribute('title', text);
+  }
+  function apply(next) { root.setAttribute('data-theme', next); relabel(); }
+  function finishSwitch() { root.classList.remove('vt'); root.classList.remove('theme-anim'); busy = false; }
+  relabel();
+
+  tgl.addEventListener('click', function () {
+    if (busy) return;
+    busy = true;
+    var next = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('card-theme', next); } catch (e) {}
+    tgl.classList.remove('pulse'); void tgl.offsetWidth; tgl.classList.add('pulse');
+
+    if (reduce) { apply(next); finishSwitch(); return; }
+
+    if (document.startViewTransition) {
+      /* a circle grows from the button and reveals the new look */
+      var rect = tgl.getBoundingClientRect();
+      var x = rect.left + rect.width / 2, y = rect.top + rect.height / 2;
+      var radius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+      root.classList.add('vt');
+      var vt = document.startViewTransition(function () { apply(next); });
+      vt.ready.then(function () {
+        try {
+          root.animate(
+            { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+            { duration: 750, easing: 'cubic-bezier(.4,0,.2,1)', pseudoElement: '::view-transition-new(root)' }
+          );
+        } catch (err) { root.classList.remove('vt'); }
+      }, function () {});
+      vt.finished.then(finishSwitch, finishSwitch);
+    } else {
+      /* other browsers: every colour fades smoothly */
+      root.classList.add('theme-anim');
+      apply(next);
+      setTimeout(finishSwitch, 700);
+    }
+  });
+  tgl.addEventListener('animationend', function () { tgl.classList.remove('pulse'); });
+
+  /* follow the phone's own light / dark setting until the visitor has used the button */
+  if (window.matchMedia) {
+    var sys = matchMedia('(prefers-color-scheme: dark)');
+    var onSystem = function (e) {
+      var saved = null;
+      try { saved = localStorage.getItem('card-theme'); } catch (err) {}
+      if (saved !== 'light' && saved !== 'dark') apply(e.matches ? 'dark' : 'light');
+    };
+    if (sys.addEventListener) sys.addEventListener('change', onSystem);
+    else if (sys.addListener) sys.addListener(onSystem);
+  }
 })();

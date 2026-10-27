@@ -40,6 +40,7 @@ window.CARD = {
 
   labels: {
     scroll: "Scroll", directions: "Get Directions",
+    toDark: "Switch to dark mode", toLight: "Switch to light mode",
     days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds"
   }
 };

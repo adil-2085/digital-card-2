@@ -1,24 +1,62 @@
 /* THEME: colours, fonts, card width and the background image.
-   Edit this file to restyle the card. */
+   Edit this file to restyle the card.
+   Light colours are the default. The DARK MODE block is used when the card is in dark mode:
+   the phone's own setting the first time, then whatever the sun / moon button chose. */
 :root{
+  color-scheme:light dark;       /* the card has its own light AND dark colours, so browsers leave it alone */
+
+  /* brand colours */
   --maroon:#5a0f1f;
   --deep:#3a0914;
   --ivory:#f6efe3;
-  --paper:#d9d0bf;
+
+  /* LIGHT MODE */
+  --page-bg:#d9d0bf;
   --surround:#eadfce;            /* colour around the card on wide screens */
+  --ink:var(--maroon);           /* text, lines and the star */
+  --box-bg:var(--maroon);        /* countdown boxes and the directions button */
+  --box-ink:var(--ivory);
+  --box-hover:var(--deep);
+  --box-ring:transparent;
+  --panel-bg:rgba(246,239,227,.7);
+  --panel-line:rgba(90,15,31,.55);
+  --panel-ring1:rgba(246,239,227,.75);
+  --panel-ring2:rgba(90,15,31,.28);
+  --tg-bg:rgba(246,239,227,.82);                 /* sun / moon button */
+  --tg-shadow:0 6px 18px rgba(58,9,20,.22);
+  --bg-base:#fff;                /* white x picture = the picture exactly as it is */
+
   --font-script:'Great Vibes','Pinyon Script',cursive;
   --font-serif:'Cormorant Garamond',Georgia,serif;
   --font-arabic:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif;
   --card-width:480px;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--surround:#1c0609}}
-:root[data-theme="dark"]{--surround:#1c0609}
+
+/* DARK MODE */
+:root[data-theme="dark"]{
+  --page-bg:#1d0910;
+  --surround:#120508;
+  --ink:var(--ivory);
+  --box-bg:#2b0811;
+  --box-ink:var(--ivory);
+  --box-hover:#3d0c18;
+  --box-ring:rgba(246,239,227,.35);
+  --panel-bg:rgba(34,8,15,.55);
+  --panel-line:rgba(246,239,227,.4);
+  --panel-ring1:rgba(34,8,15,.55);
+  --panel-ring2:rgba(246,239,227,.22);
+  --tg-bg:rgba(34,8,15,.66);
+  --tg-shadow:0 6px 18px rgba(0,0,0,.35),0 0 16px rgba(246,239,227,.12);
+  --bg-base:#6b1a2a;             /* maroon x picture = the same florals in deep maroon */
+}
 
 /* BACKGROUND: replace assets/images/background.jpg (keep the same name) to change it,
-   or point this url() at another file. Position and size can be tuned here too. */
-.bg{
-  background-color:var(--paper);
+   or point this url() at another file. Position and size can be tuned here too.
+   The picture is multiplied with --bg-base, so the colour follows light or dark mode. */
+.bg{background-color:var(--bg-base)}
+.bg::before{
   background-image:url("../assets/images/background.jpg");
   background-position:center;
   background-size:cover;
+  mix-blend-mode:multiply;
 }
