@@ -36,7 +36,7 @@ window.CARD = {
   /* countdown page; target is India time (+05:30) */
   eventStart: "2026-11-22T11:00:00+05:30",
   countdownLead: "Counting down to the big day",
-  sharedBy: { label: "Sharing the happiness:", name: "Muhammed Adil" },
+  sharedBy: { label: "Sharing the happiness:", name: "Muhammed Adil , Sujina Jaseem" },
 
   labels: {
     scroll: "Scroll", directions: "Get Directions",
